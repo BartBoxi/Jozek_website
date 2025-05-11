@@ -7,12 +7,12 @@ body {
 }
 
 header {
-    background: #333;
-    color: white;
+    background: #000;
+    color: black;
     padding: 1rem;
     text-align: center;
 }
-
+  
 nav a {
     color: white;
     margin: 0 1rem;
@@ -26,9 +26,23 @@ section {
     max-width: 800px;
     border-radius: 8px;
 }
-
 footer {
-    text-align: center;
+    text-align: center; /* Centers inline content within the footer */
     padding: 1rem;
     background: #eee;
+}
+
+.site-footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.site-footer li {
+    /* display: block; Removed this as it's the default */
+    margin-bottom: 0.5rem; /* Adds vertical spacing between list items */
+}
+
+.site-footer li:last-child {
+    margin-bottom: 0; /* Removes the bottom margin from the last item */
 }
