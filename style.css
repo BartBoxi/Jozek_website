@@ -6,22 +6,44 @@ body {
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
+
+    /* --- STICKY FOOTER ADDITIONS --- */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* --- Header & Navigation Styles (Keep these as they are) --- */
+/* --- Header & Navigation Styles --- */
 header {
     background: #000;
     color: black;
-    padding: 1rem;
+    padding: 0;
     text-align: center;
 }
-  
+
+/* Styles for the header banner image (logo) */
+.header-banner-img {
+    width: 20%; /* As per your provided CSS */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centered */
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+nav {
+    background: #000;
+    padding: 1rem 0;
+    text-align: center;
+}
+
 nav a {
     color: white;
     margin: 0 1rem;
     text-decoration: none;
     display: inline-block;
     padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
 }
 
 nav a:hover {
@@ -33,31 +55,25 @@ section {
     padding: 2rem;
     background: white;
     margin: 1rem auto;
-    max-width: 800px; /* Standard width for content sections */
+    max-width: 95%; /* Wider on smaller screens */
+    width: clamp(300px, 90%, 1200px); /* Responsive width */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-grow: 1; /* For sticky footer */
 }
 
-/* --- Projekty Galeria Section (on nasza_projekty.html - main summarized projects page) --- */
-#projekty-galeria {
-    padding: 2rem;
-    background: white;
-    margin: 1rem auto;
-    max-width: 800px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-#projekty-galeria h2 {
+/* Ensure H2s have consistent styling across pages */
+h2 {
     font-size: 2.5em;
     color: #333;
     margin-bottom: 40px;
     position: relative;
     display: inline-block;
+    text-align: center;
+    width: 100%;
 }
 
-#projekty-galeria h2::after {
+h2::after {
     content: '';
     display: block;
     width: 60%;
@@ -67,14 +83,27 @@ section {
     border-radius: 2px;
 }
 
-.gallery { /* This refers to the gallery on nasza_projekty.html */
+/* --- Projekty Galeria Section (on nasza_projekty.html - main summarized projects page) --- */
+#projekty-galeria {
+    padding: 2rem;
+    background: white;
+    margin: 1rem auto;
+    max-width: 95%;
+    width: clamp(300px, 90%, 1200px);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    flex-grow: 1; /* For sticky footer */
+}
+
+.gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 10fr)); /* As per your provided CSS */
+    gap: 40px; /* As per your provided CSS */
     padding: 0;
 }
 
-.project-item { /* This refers to individual project cards on nasza_projekty.html */
+.project-item {
     background-color: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
@@ -152,35 +181,20 @@ section {
     padding: 2rem;
     background: white;
     margin: 1rem auto;
-    max-width: 1200px;
+    max-width: 95%;
+    width: clamp(300px, 90%, 1400px);
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     text-align: center;
+    flex-grow: 1; /* For sticky footer */
 }
 
-#full-gallery h2 {
-    font-size: 2.5em;
-    color: #333;
-    margin-bottom: 40px;
-    position: relative;
-    display: inline-block;
-}
-
-#full-gallery h2::after {
-    content: '';
-    display: block;
-    width: 60%;
-    height: 3px;
-    background-color: #007bff;
-    margin: 10px auto 0;
-    border-radius: 2px;
-}
-
-.image-grid { /* This grid arranges your 'gallery-group' cards horizontally */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px; /* Space between gallery groups */
+.image-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
     padding: 0;
+    align-items: center;
 }
 
 /* Styles for individual gallery groups */
@@ -190,9 +204,10 @@ section {
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     overflow: hidden;
-    display: flex;
-    flex-direction: column; /* Stack title and images grid vertically within the group card */
-    text-align: center; /* Center group title */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
     padding-bottom: 15px;
 }
 
@@ -202,14 +217,16 @@ section {
     margin: 15px 15px 10px;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
+    text-align: center;
 }
 
 /* Styles for the grid of images WITHIN a gallery-group */
 .gallery-group .group-images {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px; /* Space between images in the same group */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
     padding: 0 15px;
+    justify-content: center;
 }
 
 /* Styles for images within a gallery-group */
@@ -221,39 +238,170 @@ section {
     border-radius: 5px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.05);
     transition: transform 0.2s ease;
-    cursor: pointer; /* Indicate that images are clickable */
+    cursor: pointer;
 }
 
 .gallery-group .group-images img:hover {
     transform: scale(1.05);
 }
 
-/* --- Modal/Lightbox Styles (NEW) --- */
+
+/* --- Modal/Lightbox Styles (Keep as is) --- */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
-    padding-top: 50px; /* Location of the box (from the top) */
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-    transition: opacity 0.3s ease; /* Smooth fade in/out */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    transition: opacity 0.3s ease;
 }
 
 .modal.open {
-    display: block; /* Show when open */
+    display: block;
     opacity: 1;
 }
 
 .modal-content {
     margin: auto;
     display: block;
-    max-width: 90%; /* Max width of the image */
-    max-height: 85vh; /* Max height of the image (85% of viewport height) */
+    max-width: 90%;
+    max-height: 85vh;
     animation-name: zoom;
     animation-duration: 0.6s;
-    border-radius: 8px; /* Slightly rounded corners for the zoomed image */
-    box-shadow: 0 0
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+@keyframes zoom {
+    from {transform: scale(0.1); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* --- Footer Styles --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    margin-top: 50px;
+}
+
+.site-footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.site-footer li {
+    margin: 0;
+}
+
+/* New styles for the email item in the footer */
+.footer-email-item {
+    display: flex; /* Use flexbox to align icon and text horizontally */
+    align-items: center; /* Vertically center icon and text */
+    justify-content: center; /* Horizontally center content within this item */
+    gap: 8px; /* Space between the icon and the email text */
+    color: white; /* Ensure text color is white */
+}
+
+.footer-icon-email {
+    width: 24px; /* Adjust size of your email icon */
+    height: 24px;
+    vertical-align: middle; /* Align icon vertically with text */
+    /* If your image_icon.jpg is a monochrome image, you can try to apply filter like contact-icon,
+       but it's more reliable if the icon is already the desired color or is an SVG. */
+    /* filter: invert(90%) sepia(100%) saturate(1000%) hue-rotate(15deg) brightness(1.2); */
+}
+
+.site-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for Facebook icon */
+.site-footer img { /* General img rule for footer */
+    vertical-align: middle;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin-bottom: 0;
+    border-radius: 50%;
+}
+
+.site-footer img:hover {
+    transform: scale(1.1);
+}
+
+/* --- Media Queries for overall responsiveness (optional but good practice) --- */
+@media (max-width: 768px) {
+    nav a {
+        margin: 0 0.5rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav a {
+        display: block;
+        margin: 0.3rem 0;
+        padding: 0.5rem 0;
+    }
+
+    section {
+        padding: 1rem;
+    }
+}
