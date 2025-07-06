@@ -409,7 +409,7 @@ footer {
 
 .hero {
     position: relative;
-    background: url('/Users/bartoszpudlo/Documents/Jozek_website/zdjecia/transparent_house_image.png') center/cover no-repeat;
+    background: url('/zdjecia/transparent_house_image.png') center/cover no-repeat;
     color: black;
     padding: 100px 20px;
     text-align: center;
